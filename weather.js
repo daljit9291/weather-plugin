@@ -1,6 +1,7 @@
 
 $(document).ready(function(){
 	var id = $("div[data-type='plugin']");
+	id.css("background","url(../Project/_images/"+data.weather[0].icon+".jpg)");
  function set(ht){
  	$.ajax({
             type: "GET",
