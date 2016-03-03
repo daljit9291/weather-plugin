@@ -1,10 +1,22 @@
-
+var lat;
+var lon;
 $(document).ready(function(){
-	var id = $("div[data-type='plugin']");
+if (navigator.geolocation) {
+	 navigator.geolocation.getCurrentPosition(function(position) {
+   lat = position.coords.latitude;
+   lon= position.coords.longitude;
+   var id = $("div[data-type='plugin']");
+   set(id);
+  });
+}
+else{
+	$("div[data-type='plugin']").html("Oops! no location found");
+}
+});
  function set(ht){
  	$.ajax({
             type: "GET",
-            url: "http://api.openweathermap.org/data/2.5/weather?q=jalandhar&APPID=9a0bfebddb482e7b0dd96255f3b22f67",
+            url: "http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&APPID=9a0bfebddb482e7b0dd96255f3b22f67",
             datatype: "json",
             success:function(data){
             	var date= new Date(data.dt*1000);
@@ -15,10 +27,7 @@ $(document).ready(function(){
 					var n = parseInt(num, 10);
             	$(ht).append("<h5 id='temp' class='text'>"+n+"&deg;C</h5>");
             	$(ht).append("<h5 id='desc' class='text'>"+data.weather[0].description+"</h5>");
+            	
             }
          });
         }
- 
- 	set(id);
-
-});
