@@ -1,6 +1,11 @@
 var lat;
 var lon;
+
 $(document).ready(function(){
+	$("div[data-type='plugin']").html("<img id='close' src='../weather-plugin/_images/close.png'>");
+$("#close").click(function() {
+	$("div[data-type='plugin']").hide();
+	});
 if (navigator.geolocation) {
 	 navigator.geolocation.getCurrentPosition(function(position) {
    lat = position.coords.latitude;
