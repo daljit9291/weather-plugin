@@ -1,7 +1,6 @@
 
 $(document).ready(function(){
 	var id = $("div[data-type='plugin']");
-	id.css("background","url(../Project/_images/"+data.weather[0].icon+".jpg)");
  function set(ht){
  	$.ajax({
             type: "GET",
@@ -9,8 +8,13 @@ $(document).ready(function(){
             datatype: "json",
             success:function(data){
             	var date= new Date(data.dt*1000);
-            	$(ht).append("<h1>"+date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear()+"</h1>");
-            	
+            	$(ht).append("<h5 id='city' class='text'>"+data.name+"</h5>");
+            	$(ht).append("<img id='icon' src='../weather-plugin/_images/"+data.weather[0].icon+".png' width='30' height='30'>");
+            	$(ht).css("background","url(../weather-plugin/_images/"+data.weather[0].icon+".jpg)");
+            	var num =data.main.temp-272.15;
+					var n = parseInt(num, 10);
+            	$(ht).append("<h5 id='temp' class='text'>"+n+"&deg;C</h5>");
+            	$(ht).append("<h5 id='desc' class='text'>"+data.weather[0].description+"</h5>");
             }
          });
         }
