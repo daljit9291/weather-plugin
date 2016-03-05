@@ -1,3 +1,9 @@
+******************
+*  weather.js    *
+******************
+//Author: Jaskaranjit singh
+//webiste:jaskaranjitsingh.com
+
 var lat;
 var lon;
 
