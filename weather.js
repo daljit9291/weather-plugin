@@ -8,7 +8,7 @@ var lat;
 var lon;
 
 $(document).ready(function(){
-	$("div[data-type='plugin']").html("<img id='close' src='../weather-plugin/_images/close.png'>");
+	$("div[data-type='plugin']").html("<img id='close' src='_images/close.png'>");
 $("#close").click(function() {
 	$("div[data-type='plugin']").hide();
 	});
@@ -32,8 +32,8 @@ else{
             success:function(data){
             	var date= new Date(data.dt*1000);
             	$(ht).append("<h5 id='city' class='text'>"+data.name+"</h5>");
-            	$(ht).append("<img id='icon' src='../weather-plugin/_images/"+data.weather[0].icon+".png' width='30' height='30'>");
-            	$(ht).css("background","url(../weather-plugin/_images/"+data.weather[0].icon+".jpg)");
+            	$(ht).append("<img id='icon' src='_images/"+data.weather[0].icon+".png' width='30' height='30'>");
+            	$(ht).css("background","url(_images/"+data.weather[0].icon+".jpg)");
             	var num =data.main.temp-272.15;
 					var n = parseInt(num, 10);
             	$(ht).append("<h5 id='temp' class='text'>"+n+"&deg;C</h5>");
